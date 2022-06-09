@@ -15,11 +15,44 @@ para que coincida con nuestro ancho y alto
 
 
 .block{
-    background-color: purple;
-    width:200px;
-    height:200px; 
+    background-color:#ffffff;
+    width:3000px;
+    height:500px; 
     padding:50px;
-    border: 5px solid blue;
+    border: 5px #ffffff;
     box-sizing: border-box;
     margin:auto;
-}
+}    
+ .static{
+    position:static;
+    border: 3px solid green;
+    top:400px;
+    left:50px;   
+ }
+ .relative{
+    position:relative;
+    border: 3px solid green;
+    top:400px;
+    left:50px;
+    width: 400px;
+    height: 500px;  
+ }
+ 
+ .fixed{
+    position:fixed;
+    border: 3px solid green;
+    top:150px;
+    left:50px;    
+ }
+ .absolute{
+    position:absolute;
+    border:3px solid green;
+    top:80px;
+    left:50px;
+    width: 200px;
+    height: 100px;     
+ }
+ 
+ 
+
+
