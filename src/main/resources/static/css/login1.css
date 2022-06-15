@@ -3,10 +3,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 28 may 2022, 15:24:28
+    Created on : 9 jun 2022, 15:40:26
     Author     : Dayanna Rojas
 */
-@import url('https://fonts.googleapis.com/css2?family=Tai+Heritage+Pro&display=swap');
 
 *{
     margin: 0;
@@ -126,6 +125,4 @@ input[type="submit"]:hover{
 .txt_field input:focus-spam::before
 .txt_field input:valid-spam::before{
    width: 100%;
- 
 }
-
