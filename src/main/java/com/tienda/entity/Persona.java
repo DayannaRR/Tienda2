@@ -21,7 +21,6 @@ import javax.persistence.Table;
 @Table(name = "personas")
 
 public class Persona implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

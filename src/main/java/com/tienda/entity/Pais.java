@@ -20,7 +20,6 @@ import javax.persistence.Table;
 @Table(name = "paises")
 
 public class Pais implements Serializable{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
