@@ -4,8 +4,8 @@
  */
 package com.tienda.entity;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
+import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @Table(name = "paises")
 
 public class Pais implements Serializable{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
