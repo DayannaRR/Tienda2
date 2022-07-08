@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Dayanna Rojas
  */
 @Repository
-public interface PaisRepository extends CrudRepository <Pais,Long>{
+public interface PaisRepository extends CrudRepository<Pais,Long>{
     
 }
