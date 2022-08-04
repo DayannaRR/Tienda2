@@ -5,6 +5,10 @@
 package com.tienda.repository;
 
 import com.tienda.entity.Persona;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +19,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonaRepository extends CrudRepository<Persona,Long>{
     Persona findByNombre(String nombre);
+   
 }
+

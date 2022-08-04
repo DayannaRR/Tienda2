@@ -1,76 +1,70 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.tienda;
 import com.tienda.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+        
 
-
-
-/**
- *
- * @author Dayanna Rojas
- */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {  
-    
-    @Autowired 
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
     private UserService userDetailsService;
-    
-    @Bean 
-    public BCryptPasswordEncoder passwordEncoder(){
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
     @Bean
-    public UserService getUserService(){
+    public UserService getUserService() {
         return new UserService();
     }
-    @Bean 
-    DaoAuthenticationProvider authenticationProvider(){
-      DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-      daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-      daoAuthenticationProvider.setUserDetailsService(getUserService());
-      return daoAuthenticationProvider;
-    
-}
-    @Bean 
-    public AuthenticationSuccessHandler appAuthenticationSuccessHandler(){
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(getUserService());
+        return daoAuthenticationProvider;
+    }
+    @Bean
+    public AuthenticationSuccessHandler appAuthenticationSuccessHandler() {
         return new AppAuthenticationSuccessHandler();
     }
-    
-    public SecurityConfig(UserService userPrincipalDetailsService){
-        this.userDetailsService= userPrincipalDetailsService;
+    public SecurityConfig(UserService userPrincipalDetailsService) {
+        this.userDetailsService = userPrincipalDetailsService;
     }
     @Override
-    protected void configure(AuthenticationManagerBuilder auth){
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
-    //el siguiente metodo funciona para hacer la autenticacion del usario 
-    @Override 
-    protected void configure(HttpSecurity http)throws Exception{
-        /* http.authorizeRequests( )
-                .antMatchers("/persona","/","/login")
+    //El siguiente método funciona para hacer la autenticación del usuario
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        /* http.authorizeRequests()
+                .antMatchers("/persona","/login")
                 .hasRole("ADMIN")
-                .antMatchers("/persona","/login","/personasN")
-                .hasAnyRole("USER","VENDEDOR","ADMIN")
+                .antMatchers("/personasN", "/persona", "/","/login")
+                .hasAnyRole("USER", "VENDEDOR", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-               
-    }
-*/
-        http.authorizeRequests( )
+                .formLogin();    
+        */
+        
+          http.authorizeRequests( )
                 .antMatchers("/persona","/login","/personasN")
                 .hasRole("ADMIN")
                 .antMatchers("/persona","/","/login")
@@ -81,6 +75,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").permitAll().defaultSuccessUrl("/persona",true);
     }
     
+      
+    //El siguiente método funciona parsa realizar la autorización de accesos
+    //i18n
+}
 
 
 
@@ -93,4 +91,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-    }
+
+    
